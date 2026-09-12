@@ -33,7 +33,7 @@ Then confirm: pages load under the base path, sitemap exists (`dist/sitemap-inde
 
 ## Deploy workflow
 
-1. `build` job: pnpm install (cached) → `pnpm build` → upload `dist/` artifact.
+1. `build` job: `pnpm/setup` (installs pnpm 12 + Node 24 from `packageManager`) → `pnpm build` → upload `dist/` artifact.
 2. `deploy` job: `actions/deploy-pages` publishes the artifact to the `github-pages` environment.
 
 Deployments are concurrency-grouped — a new push to `main` cancels an in-flight deploy.

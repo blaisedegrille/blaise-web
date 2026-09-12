@@ -22,6 +22,8 @@ Personal website built with Astro (v5+) and Tailwind CSS v4. Single-page landing
 ```
 .
 ├── src/
+│   ├── assets/
+│   │   └── me-bw.jpeg           # Portrait used on the About page (bundled + optimized)
 │   ├── layouts/
 │   │   └── BaseLayout.astro      # Global layout with Header/Footer + SEO tags
 │   ├── components/
@@ -34,6 +36,7 @@ Personal website built with Astro (v5+) and Tailwind CSS v4. Single-page landing
 │   │   └── utils.test.ts         # Vitest tests for utils
 │   ├── pages/
 │   │   ├── index.astro           # Landing page
+│   │   ├── about.astro           # About + contact page (portrait via astro:assets)
 │   │   └── blog/
 │   │       ├── index.astro       # Blog list page
 │   │       └── [...slug].astro   # Individual blog post (getStaticPaths + render)
