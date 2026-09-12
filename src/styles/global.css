@@ -4,12 +4,15 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Accent tokens — rebrand the whole site by editing these two lines.
-   Utilities like bg-accent, text-accent, hover:text-accent reference these,
-   and the .dark override flips every accent utility automatically. */
+/* Brand palette + accent tokens — rebrand the whole site by editing these lines.
+   The glow background uses aqua/yellow/pink/purple directly; UI (links, buttons,
+   highlights) uses --color-accent, flipped per theme below. */
 @theme {
-  --color-accent: oklch(0.51 0.23 276.9); /* indigo-600 */
-  --color-accent-2: oklch(0.72 0.13 195); /* soft cyan, for background glow */
+  --color-aqua: #43e7e9;
+  --color-yellow: #eed23a;
+  --color-pink: #ef7ca7;
+  --color-purple: #5600b0;
+  --color-accent: #5600b0;
 }
 
 :root {
@@ -17,6 +20,6 @@
 }
 
 .dark {
-  --color-accent: oklch(0.67 0.18 276.9); /* indigo-400 */
+  --color-accent: #c084fc; /* lighter purple for contrast on dark surfaces */
   color-scheme: dark;
 }
