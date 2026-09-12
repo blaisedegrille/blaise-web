@@ -36,7 +36,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       }
     </script>
   </head>
-  <body class="flex min-h-screen flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+  <body
+    class="isolate flex min-h-screen flex-col bg-white text-zinc-900 antialiased selection:bg-accent/20 dark:bg-zinc-950 dark:text-zinc-100"
+  >
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+      <div
+        class="absolute -top-40 left-1/2 h-[30rem] w-[60rem] -translate-x-1/2 rounded-full bg-accent/20 blur-[140px] dark:bg-accent/25"
+      >
+      </div>
+      <div
+        class="absolute top-[35%] -left-48 h-96 w-96 rounded-full bg-accent-2/15 blur-[120px] dark:bg-accent-2/20"
+      >
+      </div>
+      <div
+        class="absolute -right-48 -bottom-40 h-96 w-96 rounded-full bg-accent/10 blur-[120px] dark:bg-accent/15"
+      >
+      </div>
+    </div>
     <Header />
     <main class="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
       <slot />

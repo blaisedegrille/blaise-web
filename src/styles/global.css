@@ -3,3 +3,20 @@
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Accent tokens — rebrand the whole site by editing these two lines.
+   Utilities like bg-accent, text-accent, hover:text-accent reference these,
+   and the .dark override flips every accent utility automatically. */
+@theme {
+  --color-accent: oklch(0.51 0.23 276.9); /* indigo-600 */
+  --color-accent-2: oklch(0.72 0.13 195); /* soft cyan, for background glow */
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  --color-accent: oklch(0.67 0.18 276.9); /* indigo-400 */
+  color-scheme: dark;
+}

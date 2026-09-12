@@ -32,7 +32,7 @@ const { Content } = await render(post);
       }
     </header>
     {post.data.image && <img src={post.data.image} alt={post.data.title} class="mb-8 rounded-lg" />}
-    <div class="prose prose-zinc dark:prose-invert max-w-none">
+    <div class="prose prose-zinc prose-a:font-medium prose-a:text-accent dark:prose-invert max-w-none">
       <Content />
     </div>
   </article>
