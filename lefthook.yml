@@ -1,13 +1,27 @@
 # Lefthook git hooks configuration.
 # Install/update hooks with: pnpm exec lefthook install
+#
+# Hooks bootstrap Node/pnpm from nvm inside the command itself, because GUI
+# git clients (e.g. GitHub Desktop) launch hooks with a minimal PATH that
+# doesn't include ~/.bashrc setup.
 pre-commit:
   commands:
     biome:
       glob: '*.{js,jsx,ts,tsx,astro,css,json,jsonc,md,mdx}'
-      run: pnpm exec biome check --write --staged --no-errors-on-unmatched
+      run: |
+        for d in "$HOME"/.nvm/versions/node/*/bin; do
+          [ -d "$d" ] && PATH="$d:$PATH"
+        done
+        export PATH
+        pnpm exec biome check --write --staged --no-errors-on-unmatched
       stage_fixed: true
 
 commit-msg:
   commands:
     conventional:
-      run: node scripts/commit-msg.mjs {1}
+      run: |
+        for d in "$HOME"/.nvm/versions/node/*/bin; do
+          [ -d "$d" ] && PATH="$d:$PATH"
+        done
+        export PATH
+        node scripts/commit-msg.mjs {1}
