@@ -1,0 +1,18 @@
+---
+import { withBase } from '../lib/utils';
+---
+
+<section class="flex flex-col gap-4 py-16">
+  <h1 class="text-4xl font-bold tracking-tight">Hi, I'm Blaise.</h1>
+  <p class="text-lg text-zinc-600 dark:text-zinc-300">
+    Welcome to my corner of the web — a personal site built with Astro and Tailwind CSS.
+  </p>
+  <div class="mt-4">
+    <a
+      href={withBase('/blog')}
+      class="inline-block rounded-md bg-zinc-900 px-5 py-2.5 font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+    >
+      Read the blog
+    </a>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+description: Astro component and page conventions for .astro files
+globs: ["**/*.astro"]
+alwaysApply: false
+---
+
+# Astro conventions
+
+- Components live in `src/components/` (PascalCase, one per file); layouts in `src/layouts/`; pages in `src/pages/`.
+- Type all props with `interface Props` in frontmatter; destructure with defaults: `const { title = 'Blaise' } = Astro.props;`.
+- Prefer Tailwind v4 utilities in markup; use `class:list` for conditionals. Scoped `<style>` only when utilities can't express it.
+- Dark mode pairs with `dark:` variants (`.dark` class strategy; custom variant in `src/styles/global.css`).
+- Pages using dynamic routes (`[...slug].astro`) must export `getStaticPaths` returning `params: { slug: post.id }`.
+- Render content with `render(post)` from `astro:content` (not `entry.render()`).
+- Query content only via `getCollection('blog')` / `getEntry()` — no filesystem reads.
+- Internal links: `withBase()` from `src/lib/utils.ts` or `import.meta.env.BASE_URL`. Never hardcode the base path.
+- Site config (title/description/tags/image) flows through `BaseLayout` props for SEO tags.

@@ -1,0 +1,19 @@
+---
+description: Content authoring conventions for blog posts and the content schema
+globs: ["src/content/**", "src/content.config.ts"]
+alwaysApply: false
+---
+
+# Content conventions
+
+- Posts are `.mdx` files in `src/content/blog/`, slugs are lowercase-kebab-case (the filename becomes the URL: `/blog/<slug>/`).
+- Frontmatter schema (enforced in `src/content.config.ts` via zod):
+  - `title`: string (required)
+  - `description`: string (recommended, used for SEO + list page)
+  - `published`: ISO date (required)
+  - `tags`: string[], kebab-case, default `[]`
+  - `image`: string, optional
+  - `draft`: boolean, default `false` — set `true` for work in progress
+- Blog list filters drafts and sorts by `published` descending — do not work around this in pages.
+- MDX is JSX-like: escape `{` and `<` in prose; code blocks must declare a language.
+- Changes to the schema must be reflected in `AGENTS.md`, `docs/content-authoring.md`, and any affected pages.

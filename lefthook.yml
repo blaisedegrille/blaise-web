@@ -1,0 +1,13 @@
+# Lefthook git hooks configuration.
+# Install/update hooks with: pnpm exec lefthook install
+pre-commit:
+  commands:
+    biome:
+      glob: '*.{js,jsx,ts,tsx,astro,css,json,jsonc,md,mdx}'
+      run: pnpm exec biome check --write --staged --no-errors-on-unmatched
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    conventional:
+      run: node scripts/commit-msg.mjs {1}

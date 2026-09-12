@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  tags?: string[];
+}
+
+const { title, description, image, tags = [] } = Astro.props;
+const siteName = 'Blaise';
+const pageTitle = title ? `${title} | ${siteName}` : siteName;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description ?? `${siteName} — personal site`} />
+    <meta name="generator" content={Astro.generator} />
+    {tags.length > 0 && <meta name="keywords" content={tags.join(', ')} />}
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="canonical" href={canonical} />
+    <title>{pageTitle}</title>
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark' || (!stored && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body class="flex min-h-screen flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
+    <Header />
+    <main class="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

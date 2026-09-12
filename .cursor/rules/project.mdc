@@ -1,0 +1,38 @@
+---
+description: Project-wide rules for blaise-web — always apply. Canonical conventions live in AGENTS.md.
+globs:
+alwaysApply: true
+---
+
+# Project rules
+
+Read `AGENTS.md` first — it is the single source of truth for stack, commands, conventions, and the Definition of Done.
+
+## Commands
+
+| Task | Command |
+|------|---------|
+| Dev server | `pnpm dev` |
+| Build | `pnpm build` |
+| Typecheck | `pnpm typecheck` |
+| Lint | `pnpm lint` |
+| Tests | `pnpm test` |
+| All gates | `pnpm validate` |
+
+## Hard rules
+
+- Stack: Astro 7, TypeScript strict, Tailwind CSS v4 (`@tailwindcss/vite`), pnpm. Do not introduce other frameworks or package managers.
+- Package manager is pnpm — never generate `package-lock.json` or `yarn.lock`.
+- Never edit `dist/`, `.astro/`, `node_modules/`, or `pnpm-lock.yaml` directly.
+- Never edit `session-*.md` or `plan.txt`.
+- Do not modify `biome.json` unless explicitly asked (config is settled).
+- Commits follow Conventional Commits (enforced by lefthook commit-msg hook).
+
+## Definition of Done
+
+Before declaring any task complete, `pnpm validate` must pass, new logic needs tests in `src/**/*.test.ts`, and behavior changes require doc updates (`AGENTS.md`, `ARCHITECTURE.md`, `docs/*`).
+
+## Known pitfalls
+
+- Biome `--write` on `.astro` frontmatter is not idempotent (biomejs/biome#7912). Lint `.astro` read-only; never apply `lint:fix:unsafe` to them.
+- Site is served under base path `/blaise-web` (GitHub Pages project site). All internal links must be base-path-aware (`withBase()` from `src/lib/utils.ts` or `import.meta.env.BASE_URL`).

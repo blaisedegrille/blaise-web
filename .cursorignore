@@ -1,0 +1,18 @@
+# Never expose or index these
+.git/
+dist/
+.astro/
+node_modules/
+coverage/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Session artifacts
+session-*.md
+plan.txt
+
+# Lockfiles & generated
+pnpm-lock.yaml
