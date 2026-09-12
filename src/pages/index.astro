@@ -9,12 +9,18 @@ import { withBase } from '../lib/utils';
     <p class="text-lg text-zinc-600 dark:text-zinc-300">
       Welcome to my corner of the web — a personal site built with Astro and Tailwind CSS.
     </p>
-    <div class="mt-4">
+    <div class="mt-4 flex items-center gap-4">
       <a
         href={withBase('/blog')}
         class="inline-block rounded-md bg-accent px-5 py-2.5 font-medium text-white transition-colors hover:bg-accent/90 dark:text-zinc-950 dark:hover:bg-accent/80"
       >
         Read the blog
+      </a>
+      <a
+        href={withBase('/about')}
+        class="text-zinc-600 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent dark:text-zinc-400 dark:decoration-zinc-600 dark:hover:text-accent"
+      >
+        About me
       </a>
     </div>
   </section>
