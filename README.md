@@ -23,7 +23,7 @@ pnpm preview  # Preview production build locally
 
 ## Structure
 
-- `src/pages/` — page files (landing, blog list, blog post)
+- `src/pages/` — page files (landing, about, blog list, blog post)
 - `src/layouts/` — page layouts (BaseLayout)
 - `src/components/` — reusable components (Header, Footer, PostCard)
 - `src/content/blog/` — blog posts (MDX files)

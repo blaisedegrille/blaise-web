@@ -3,3 +3,23 @@
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Brand palette + accent tokens — rebrand the whole site by editing these lines.
+   The glow background uses aqua/yellow/pink/purple directly; UI (links, buttons,
+   highlights) uses --color-accent, flipped per theme below. */
+@theme {
+  --color-aqua: #43e7e9;
+  --color-yellow: #eed23a;
+  --color-pink: #ef7ca7;
+  --color-purple: #5600b0;
+  --color-accent: #5600b0;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  --color-accent: #c084fc; /* lighter purple for contrast on dark surfaces */
+  color-scheme: dark;
+}
